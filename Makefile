@@ -12,3 +12,7 @@ install: .PHONY
 	${BSD_INSTALL_DATA} en_DK.UTF-8/LC_MONETARY ${TARGET_DIR}
 	${LN} ${LOCALE_DIR}/en_GB.UTF-8/LC_NUMERIC ${TARGET_DIR}
 	${BSD_INSTALL_DATA} en_DK.UTF-8/LC_TIME ${TARGET_DIR}
+
+test: .PHONY
+	@env -i PATH_LOCALE=${PWD} LANG=en_DK.UTF-8 date +%x | \
+		grep -q "$$(date +%Y-%m-%d)"
